@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="이름: "/>
+
+    <EditText
+        android:id="@+id/inputName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="설명: "/>
+
+    <EditText
+        android:id="@+id/inputExplan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="영업시간 / 요일: "/>
+
+    <EditText
+        android:id="@+id/inputTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="위치: "/>
+
+    <EditText
+        android:id="@+id/inputLoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="메뉴: "/>
+
+    <TextView
+        android:id="@+id/menuList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/inputMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/addMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="메뉴 추가"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카테고리: "/>
+
+
+    <Spinner
+        android:id="@+id/inputCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/temp"
+        android:text="dlatl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:id="@+id/registerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="등록"/>
+
+</LinearLayout>
