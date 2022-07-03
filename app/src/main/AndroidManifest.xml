@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Knueats"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="${API_MAPS_KEY}" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
