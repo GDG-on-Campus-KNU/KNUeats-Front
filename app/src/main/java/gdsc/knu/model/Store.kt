@@ -1,7 +1,7 @@
 package gdsc.knu.model
 
 data class Store(
-    val id: Int,
+    val id: Long,
     val name: String,
     val description: String,
     val tel: String,
