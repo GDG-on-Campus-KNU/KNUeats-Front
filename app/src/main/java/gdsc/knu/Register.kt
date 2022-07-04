@@ -43,7 +43,7 @@ class Register : AppCompatActivity() {
             AdapterView.OnItemClickListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long)  {
                 selected_category = binding.inputCategory.selectedItem.toString()
-                binding.temp.setText(selected_category)
+            //    binding.temp.setText(selected_category)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?){
