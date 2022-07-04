@@ -16,11 +16,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/map_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.naver.maps.map.MapFragment" />
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/map_fragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:name="com.naver.maps.map.MapFragment" />-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/plusButton"

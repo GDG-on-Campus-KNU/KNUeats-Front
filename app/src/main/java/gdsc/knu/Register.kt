@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import gdsc.knu.databinding.RegisterPageBinding
 
 private lateinit var binding: RegisterPageBinding
@@ -14,23 +16,28 @@ class Register : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = RegisterPageBinding.inflate(layoutInflater)
-        var view=binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         // 메뉴 추가
         var list = ArrayList<String>()
+
+
         binding.addMenu.setOnClickListener {
             list.add(binding.inputMenu.text.toString())
+
+            Log.d("test log", list.toString())
+
+            binding.recyclerView.layoutManager=LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+            binding.recyclerView.adapter=Adapter(list)
+            binding.recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+
             binding.inputMenu.setText("")
-            binding.menuList.setText("")
-            for(i in 0 until list.size)
-                binding.menuList.append(list[i]+"\n")
         }
 
         // 스피너
         var selected_category = "한식"
         val itemList = listOf("한식", "중식", "양식", "일식", "술집", "카페", "기타")
-        val adapter = ArrayAdapter(this, com.naver.maps.map.R.layout.support_simple_spinner_dropdown_item, itemList)
+        val adapter = ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, itemList)
         binding.inputCategory.adapter = adapter
         binding.inputCategory.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener,
             AdapterView.OnItemClickListener {
