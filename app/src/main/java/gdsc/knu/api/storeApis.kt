@@ -13,6 +13,4 @@ fun getStore(id:Long): Store = Store(
     listOf("소세지오므라이스","베이컨새우볶음밥"),
     "한식"
 
-
-
 )

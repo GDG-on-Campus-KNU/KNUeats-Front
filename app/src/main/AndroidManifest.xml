@@ -17,7 +17,7 @@
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="${API_MAPS_KEY}" />
         <activity
-            android:name=".CardActivity"
+            android:name=".LookupActivity"
             android:exported="true">
 
             <intent-filter>

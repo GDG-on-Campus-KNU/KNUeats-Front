@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import gdsc.knu.api.getStore
 import gdsc.knu.databinding.StoreLookupBinding
 
-class CardActivity : AppCompatActivity() {
+class LookupActivity : AppCompatActivity() {
     private var mBinding: StoreLookupBinding? = null
     private val binding get() = mBinding!!
     var menuList = arrayListOf<MenuItem>()
