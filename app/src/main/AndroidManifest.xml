@@ -17,14 +17,16 @@
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="${API_MAPS_KEY}" />
         <activity
-            android:name=".MainActivity"
+            android:name=".CardActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
