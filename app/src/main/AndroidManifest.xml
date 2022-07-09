@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="gdsc.knu">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,7 +19,7 @@
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="${API_MAPS_KEY}" />
         <activity
-            android:name=".LookupActivity"
+            android:name=".MapActivity"
             android:exported="true">
 
             <intent-filter>
@@ -26,7 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".Register"/>
+        <activity android:name=".LookupActivity"/>
     </application>
 
 </manifest>
