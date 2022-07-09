@@ -7,14 +7,11 @@ import gdsc.knu.databinding.ActivityStoreLookupBinding
 import gdsc.knu.model.MenuItem
 
 class LookupActivity : AppCompatActivity() {
-    private var mBinding: ActivityStoreLookupBinding? = null
-    private val binding get() = mBinding!!
+    private val binding by lazy { ActivityStoreLookupBinding.inflate(layoutInflater) }
     private val menuList = arrayListOf<MenuItem>()
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-
-        mBinding = ActivityStoreLookupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val id = intent.getLongExtra("store_id", 1)
@@ -28,11 +25,6 @@ class LookupActivity : AppCompatActivity() {
         binding.category.text = restaurant.category
         addData(restaurant.menu)
         binding.mRecyclerView.adapter = MenuAdapter(menuList)
-    }
-
-    override fun onDestroy(){
-        mBinding = null
-        super.onDestroy()
     }
 
     private fun addData(menus: List<String>){

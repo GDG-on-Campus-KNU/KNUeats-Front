@@ -12,11 +12,10 @@ import gdsc.knu.databinding.ActivityRegisterBinding
 import gdsc.knu.model.RestaurantCreateRequest
 
 class RegisterActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityRegisterBinding
+    private val binding by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 메뉴 추가
