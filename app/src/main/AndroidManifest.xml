@@ -21,6 +21,7 @@
         <activity
             android:name=".MapActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,6 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register"/>
+        <activity android:name=".LookupActivity"/>
     </application>
 
 </manifest>

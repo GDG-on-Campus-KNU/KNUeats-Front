@@ -8,6 +8,6 @@ data class Store(
     val address: String,
     val latitude: Double,
     val longitude: Double,
-    val menu: Array<String>,
+    val menu: List<String>,
     val category: String
 )
