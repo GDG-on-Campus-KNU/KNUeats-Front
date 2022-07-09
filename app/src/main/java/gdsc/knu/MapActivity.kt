@@ -23,7 +23,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
 
         binding.plusButton.setOnClickListener {
-            val intent= Intent(this, Register::class.java)
+            val intent= Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
