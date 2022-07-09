@@ -14,7 +14,7 @@ fun getRestaurant(id:Long): Restaurant = Restaurant(
     "한식"
 )
 
-fun getRestaurants(): Array<Restaurant> = arrayOf(
+fun getRestaurants(): List<Restaurant> = listOf(
     Restaurant(
         1,
         "김밥천국",
