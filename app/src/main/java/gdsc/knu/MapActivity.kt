@@ -73,7 +73,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 captionHaloColor = Color.WHITE
                 captionTextSize = 15f
             }.setOnClickListener {
-                println(store.id)
+                val intent= Intent(this, LookupActivity::class.java)
+                intent.putExtra("store_id", store.id)
+                startActivity(intent)
+
                 true
             }
         }
