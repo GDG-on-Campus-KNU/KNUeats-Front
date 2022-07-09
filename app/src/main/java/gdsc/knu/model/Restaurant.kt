@@ -1,6 +1,6 @@
 package gdsc.knu.model
 
-data class Store(
+data class Restaurant(
     val id: Long,
     val name: String,
     val description: String,

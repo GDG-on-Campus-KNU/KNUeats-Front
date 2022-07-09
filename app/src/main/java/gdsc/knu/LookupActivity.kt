@@ -2,7 +2,7 @@ package gdsc.knu
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import gdsc.knu.api.getStore
+import gdsc.knu.api.getRestaurant
 import gdsc.knu.databinding.StoreLookupBinding
 
 class LookupActivity : AppCompatActivity() {
@@ -14,7 +14,7 @@ class LookupActivity : AppCompatActivity() {
 
         mBinding = StoreLookupBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val store = getStore(1)
+        val store = getRestaurant(1)
 
         binding.title.text = store.name
         binding.description.text = store.description

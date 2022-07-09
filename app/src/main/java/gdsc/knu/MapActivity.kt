@@ -10,7 +10,7 @@ import com.naver.maps.geometry.LatLngBounds
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
-import gdsc.knu.api.getStores
+import gdsc.knu.api.getRestaurants
 import gdsc.knu.databinding.ActivityMapBinding
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -65,7 +65,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             LatLng(35.895, 128.62)
         )
 
-        getStores().forEach { store ->
+        getRestaurants().forEach { store ->
             Marker().apply {
                 position = LatLng(store.latitude, store.longitude)
                 map = naverMap
