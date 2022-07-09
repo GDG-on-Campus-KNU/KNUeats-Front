@@ -3,11 +3,11 @@ package gdsc.knu
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import gdsc.knu.api.getRestaurant
-import gdsc.knu.databinding.ActivityStoreLookupBinding
+import gdsc.knu.databinding.ActivityRestaurantLookupBinding
 import gdsc.knu.model.MenuItem
 
 class LookupActivity : AppCompatActivity() {
-    private val binding by lazy { ActivityStoreLookupBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityRestaurantLookupBinding.inflate(layoutInflater) }
     private val menuList = arrayListOf<MenuItem>()
 
     override fun onCreate(savedInstanceState: Bundle?){
