@@ -14,7 +14,9 @@ class LookupActivity : AppCompatActivity() {
 
         mBinding = StoreLookupBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val store = getStore(1)
+
+        val id = intent.getLongExtra("store_id", 1)
+        val store = getStore(id)
 
         binding.title.text = store.name
         binding.description.text = store.description
