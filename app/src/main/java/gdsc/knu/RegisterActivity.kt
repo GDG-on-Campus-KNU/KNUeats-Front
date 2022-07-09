@@ -20,8 +20,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 메뉴 추가
-        var list = ArrayList<String>()
-
+        val list = ArrayList<String>()
 
         binding.addMenu.setOnClickListener {
             list.add(binding.inputMenu.text.toString())
