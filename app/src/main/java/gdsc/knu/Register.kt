@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import gdsc.knu.databinding.RegisterPageBinding
 
-private lateinit var binding: RegisterPageBinding
 class Register : AppCompatActivity() {
+    private lateinit var binding: RegisterPageBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = RegisterPageBinding.inflate(layoutInflater)
