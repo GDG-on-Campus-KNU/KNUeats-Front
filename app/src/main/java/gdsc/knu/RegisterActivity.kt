@@ -8,15 +8,15 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import gdsc.knu.databinding.RegisterPageBinding
+import gdsc.knu.databinding.ActivityRegisterBinding
 import gdsc.knu.model.RestaurantCreateRequest
 
 class RegisterActivity : AppCompatActivity() {
-    private lateinit var binding: RegisterPageBinding
+    private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = RegisterPageBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // 메뉴 추가

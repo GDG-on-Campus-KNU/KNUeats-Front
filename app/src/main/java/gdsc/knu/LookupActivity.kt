@@ -3,18 +3,18 @@ package gdsc.knu
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import gdsc.knu.api.getRestaurant
-import gdsc.knu.databinding.StoreLookupBinding
+import gdsc.knu.databinding.ActivityStoreLookupBinding
 import gdsc.knu.model.MenuItem
 
 class LookupActivity : AppCompatActivity() {
-    private var mBinding: StoreLookupBinding? = null
+    private var mBinding: ActivityStoreLookupBinding? = null
     private val binding get() = mBinding!!
     private val menuList = arrayListOf<MenuItem>()
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
 
-        mBinding = StoreLookupBinding.inflate(layoutInflater)
+        mBinding = ActivityStoreLookupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val id = intent.getLongExtra("store_id", 1)
