@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import gdsc.knu.api.getRestaurant
 import gdsc.knu.databinding.StoreLookupBinding
+import gdsc.knu.model.MenuItem
 
 class LookupActivity : AppCompatActivity() {
     private var mBinding: StoreLookupBinding? = null
