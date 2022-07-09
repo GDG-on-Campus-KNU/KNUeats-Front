@@ -1,7 +1,6 @@
 package gdsc.knu
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -10,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import gdsc.knu.databinding.RegisterPageBinding
+import gdsc.knu.model.RestaurantCreateRequest
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: RegisterPageBinding
@@ -57,19 +57,16 @@ class RegisterActivity : AppCompatActivity() {
 
         //등록 버튼 누르면
         binding.registerBtn.setOnClickListener {
-            val name=binding.inputName.text.toString()
-            val explan=binding.inputExplan.text.toString()
-            val time=binding.inputTime.text.toString()
-            val loc=binding.inputLoc.text.toString()
-         //   val menu=binding.inputMenu.text.toString()
+            val request = RestaurantCreateRequest(
+                binding.inputName.text.toString(),
+                binding.inputExplan.text.toString(),
+                binding.inputTel.text.toString(),
+                binding.inputLocation.text.toString(),
+                list,
+                selected_category
+            )
 
-            Log.d("test log", name)
-            Log.d("test log", explan)
-            Log.d("test log", time)
-            Log.d("test log", loc)
-            Log.d("test log", list.toString())
-            Log.d("test log", selected_category)
-
+            Log.d("regist", request.toString())
         }
     }
 }
