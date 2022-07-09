@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="gdsc.knu">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,8 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Knueats"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="${API_MAPS_KEY}" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MapActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
