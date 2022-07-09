@@ -23,7 +23,7 @@ fun getStores(): Array<Store> = arrayOf(
         "위치1",
         35.88479847978367,
         128.61380871085896,
-        arrayOf(),
+        listOf(),
         "분식"
     ),
     Store(
@@ -34,7 +34,7 @@ fun getStores(): Array<Store> = arrayOf(
         "위치2",
         35.88501360108289,
         128.61392511273948,
-        arrayOf(),
+        listOf(),
         "편의점",
     )
 )
