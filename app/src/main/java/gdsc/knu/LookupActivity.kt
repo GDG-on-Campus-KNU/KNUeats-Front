@@ -9,7 +9,8 @@ import gdsc.knu.model.MenuItem
 class LookupActivity : AppCompatActivity() {
     private var mBinding: StoreLookupBinding? = null
     private val binding get() = mBinding!!
-    var menuList = arrayListOf<MenuItem>()
+    private val menuList = arrayListOf<MenuItem>()
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
 
@@ -17,23 +18,25 @@ class LookupActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val id = intent.getLongExtra("store_id", 1)
-        val store = getRestaurant(id)
+        val restaurant = getRestaurant(id)
 
-        binding.title.text = store.name
-        binding.description.text = store.description
-        binding.tel.text = store.tel
-        binding.address.text = store.address
-        binding.tel.text = store.tel
-        binding.category.text = store.category
-        addData(store.menu)
+        binding.title.text = restaurant.name
+        binding.description.text = restaurant.description
+        binding.tel.text = restaurant.tel
+        binding.address.text = restaurant.address
+        binding.tel.text = restaurant.tel
+        binding.category.text = restaurant.category
+        addData(restaurant.menu)
         binding.mRecyclerView.adapter = MenuAdapter(menuList)
     }
+
     override fun onDestroy(){
         mBinding = null
         super.onDestroy()
     }
-    fun addData(mlist:List<String>){
-        for(i in mlist){
+
+    private fun addData(menus: List<String>){
+        for(i in menus){
             menuList.add(MenuItem(i))
         }
     }
