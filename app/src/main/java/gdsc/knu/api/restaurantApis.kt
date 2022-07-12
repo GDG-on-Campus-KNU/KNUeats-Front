@@ -1,10 +1,10 @@
 package gdsc.knu.api
 
-import gdsc.knu.model.Store
+import gdsc.knu.model.Restaurant
 
-fun getStore(id: Long): Store {
+fun getRestaurant(id: Long): Restaurant {
     return if (id == 1L) {
-        Store(
+        Restaurant(
             id,
             "김밥천국",
             "경북대학교정문에서 대구공고로 내려오는 길에 해비치커피1층에 있습니다.^,^",
@@ -17,7 +17,7 @@ fun getStore(id: Long): Store {
         )
     }
     else {
-        Store(
+        Restaurant(
             id,
             "CU",
             "경북대학교정문에서 대구공고로 내려오는 길에 해비치커피1층에 있습니다.^,^",
@@ -31,8 +31,8 @@ fun getStore(id: Long): Store {
     }
 }
 
-fun getStores(): Array<Store> = arrayOf(
-    Store(
+fun getRestaurants(): List<Restaurant> = listOf(
+    Restaurant(
         1,
         "김밥천국",
         "김밥을 팝니다.",
@@ -43,7 +43,7 @@ fun getStores(): Array<Store> = arrayOf(
         listOf(),
         "분식"
     ),
-    Store(
+    Restaurant(
         2,
         "CU",
         "편의점입니다.",
