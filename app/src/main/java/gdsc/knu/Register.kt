@@ -30,14 +30,13 @@ class Register : AppCompatActivity() {
 
             binding.recyclerView.layoutManager=LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
             binding.recyclerView.adapter=Adapter(list)
-            binding.recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
-
+           // binding.recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
             binding.inputMenu.setText("")
         }
 
         // 스피너
         var selected_category = "한식"
-        val itemList = listOf("한식", "중식", "양식", "일식", "술집", "카페", "기타")
+        val itemList = listOf("한식", "분식", "양식", "일식", "카페/디저트", "중식", "아시안", "술집", "기타")
         val adapter = ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, itemList)
         binding.inputCategory.adapter = adapter
         binding.inputCategory.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener,
