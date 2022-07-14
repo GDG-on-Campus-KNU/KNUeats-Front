@@ -4,6 +4,12 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
+import android.view.KeyEvent.ACTION_DOWN
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.annotation.UiThread
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.geometry.LatLngBounds
@@ -35,6 +41,17 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 fm.beginTransaction().add(R.id.map_fragment, it).commit()
             }
         mapFragment.getMapAsync(this)
+
+        binding.searchMain.setOnKeyListener {view, keyCode, event ->
+            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                imm.hideSoftInputFromWindow(binding.searchMain.windowToken, 0)
+                println(binding.searchMain.text.toString()+"!!!!")
+                true
+            }
+            false
+        }
+
     }
 
     override fun onRequestPermissionsResult(
