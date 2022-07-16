@@ -4,7 +4,9 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.UiThread
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.geometry.LatLngBounds
 import com.naver.maps.map.*
@@ -23,6 +25,16 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        val categories = ArrayList<Category>()
+        for (category in Category.values()) {
+            categories.add(category)
+        }
+
+        binding.categories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.categories.adapter = CategoryAdapter(categories)
+
+        setupCategories()
 
         binding.plusButton.setOnClickListener {
             val intent= Intent(this, RegisterActivity::class.java)
@@ -86,6 +98,9 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun setupMapUi(uiSettings: UiSettings) {
         uiSettings.isLocationButtonEnabled = true
+    }
+
+    private fun setupCategories() {
     }
 
     companion object {
