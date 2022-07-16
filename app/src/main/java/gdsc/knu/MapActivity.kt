@@ -18,6 +18,7 @@ import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
 import gdsc.knu.api.getRestaurants
 import gdsc.knu.databinding.ActivityMapBinding
+import gdsc.knu.model.Restaurant
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private val binding by lazy { ActivityMapBinding.inflate(layoutInflater) }
@@ -47,6 +48,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 imm.hideSoftInputFromWindow(binding.searchMain.windowToken, 0)
                 println(binding.searchMain.text.toString()+"!!!!")
+
+                val intent=Intent(this, SearchlistActivity::class.java)
+                intent.putExtra("search_item", binding.searchMain.text.toString())
+                startActivity(intent)
                 true
             }
             false
