@@ -12,11 +12,13 @@ import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
 import gdsc.knu.api.getRestaurants
 import gdsc.knu.databinding.ActivityMapBinding
+import gdsc.knu.model.Category
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private val binding by lazy { ActivityMapBinding.inflate(layoutInflater) }
     private lateinit var locationSource: FusedLocationSource
     private lateinit var naverMap: NaverMap
+    private var selectedCategory: Category = Category.KOREA
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +67,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             LatLng(35.895, 128.62)
         )
 
-        getRestaurants().forEach { store ->
+        getRestaurants(selectedCategory).forEach { store ->
             Marker().apply {
                 position = LatLng(store.latitude, store.longitude)
                 map = naverMap

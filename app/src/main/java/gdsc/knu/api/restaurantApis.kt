@@ -1,5 +1,6 @@
 package gdsc.knu.api
 
+import gdsc.knu.model.Category
 import gdsc.knu.model.Restaurant
 
 fun getRestaurant(id: Long): Restaurant {
@@ -31,27 +32,35 @@ fun getRestaurant(id: Long): Restaurant {
     }
 }
 
-fun getRestaurants(): List<Restaurant> = listOf(
-    Restaurant(
-        1,
-        "김밥천국",
-        "김밥을 팝니다.",
-        "010-1234-5678",
-        "위치1",
-        35.88479847978367,
-        128.61380871085896,
-        listOf(),
-        "분식"
-    ),
-    Restaurant(
-        2,
-        "CU",
-        "편의점입니다.",
-        "010-1234-5678",
-        "위치2",
-        35.88501360108289,
-        128.61392511273948,
-        listOf(),
-        "편의점",
-    )
-)
+fun getRestaurants(category: Category): List<Restaurant> {
+    if (category == Category.KOREA) {
+        return listOf(
+            Restaurant(
+                1,
+                "김밥천국",
+                "김밥을 팝니다.",
+                "010-1234-5678",
+                "위치1",
+                35.88479847978367,
+                128.61380871085896,
+                listOf(),
+                "분식"
+            )
+        )
+    }
+    else {
+        return listOf(
+            Restaurant(
+                2,
+                "CU",
+                "편의점입니다.",
+                "010-1234-5678",
+                "위치2",
+                35.88501360108289,
+                128.61392511273948,
+                listOf(),
+                "편의점",
+            )
+        )
+    }
+}
