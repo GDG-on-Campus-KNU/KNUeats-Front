@@ -35,8 +35,10 @@ class SearchAdapter (private val list: ArrayList<Restaurant>) : RecyclerView.Ada
     }
 
     class ViewHolder(private val binding: SearchItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        private var view : View = binding.root
         fun bind(listener: View.OnClickListener, data : Restaurant){
             binding.textName.text=data.name
+            view.setOnClickListener(listener)
         }
     }
 }
