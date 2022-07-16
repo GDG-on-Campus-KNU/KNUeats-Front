@@ -16,7 +16,7 @@ import com.naver.maps.geometry.LatLngBounds
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
-import gdsc.knu.api.getStores
+import gdsc.knu.api.getRestaurants
 import gdsc.knu.databinding.ActivityMapBinding
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -29,7 +29,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
 
         binding.plusButton.setOnClickListener {
-            val intent= Intent(this, Register::class.java)
+            val intent= Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
@@ -82,7 +82,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             LatLng(35.895, 128.62)
         )
 
-        getStores().forEach { store ->
+        getRestaurants().forEach { store ->
             Marker().apply {
                 position = LatLng(store.latitude, store.longitude)
                 map = naverMap
@@ -90,7 +90,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
                 captionHaloColor = Color.WHITE
                 captionTextSize = 15f
             }.setOnClickListener {
-                println(store.id)
+                val intent= Intent(this, LookupActivity::class.java)
+                intent.putExtra("store_id", store.id)
+                startActivity(intent)
+
                 true
             }
         }

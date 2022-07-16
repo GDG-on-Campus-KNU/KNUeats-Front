@@ -6,7 +6,6 @@ plugins {
 
 android {
     compileSdk 32
-
     defaultConfig {
         applicationId "gdsc.knu"
         minSdk 26
@@ -35,12 +34,13 @@ android {
         jvmTarget = '1.8'
     }
 
-    viewBinding{
+    dataBinding{
         enabled = true
     }
-//    buildFeatures {
-//        viewBinding = true
-//    }
+
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
