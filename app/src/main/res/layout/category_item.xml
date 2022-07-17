@@ -7,10 +7,11 @@
     android:orientation="horizontal">
 
     <Button
-        android:id="@+id/displayName"
+        android:id="@+id/btnContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
+        android:backgroundTint="@color/selector_category_click"
         android:padding="10dp"
         android:textStyle="bold" />
 

@@ -5,6 +5,8 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.annotation.UiThread
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.naver.maps.geometry.LatLng
@@ -25,14 +27,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        val categories = ArrayList<Category>()
-        for (category in Category.values()) {
-            categories.add(category)
-        }
-
-        binding.categories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.categories.adapter = CategoryAdapter(categories)
 
         setupCategories()
 
@@ -101,6 +95,18 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun setupCategories() {
+        val categories = ArrayList<Category>()
+        for (category in Category.values()) {
+            categories.add(category)
+        }
+
+        binding.categories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.categories.adapter = CategoryAdapter(categories) {
+         selectedCategoryItem: Category -> categoryItemClicked(selectedCategoryItem)
+        }
+    }
+
+    private fun categoryItemClicked(category: Category) {
     }
 
     companion object {
