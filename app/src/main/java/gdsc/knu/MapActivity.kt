@@ -23,6 +23,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var locationSource: FusedLocationSource
     private lateinit var naverMap: NaverMap
     private var selectedCategory: Category = Category.KOREA
+    private var markers: List<Marker> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,21 +74,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             LatLng(35.895, 128.62)
         )
 
-        getRestaurants(selectedCategory).forEach { store ->
-            Marker().apply {
-                position = LatLng(store.latitude, store.longitude)
-                map = naverMap
-                captionText = store.name
-                captionHaloColor = Color.WHITE
-                captionTextSize = 15f
-            }.setOnClickListener {
-                val intent= Intent(this, LookupActivity::class.java)
-                intent.putExtra("store_id", store.id)
-                startActivity(intent)
-
-                true
-            }
-        }
+        loadRestaurants(selectedCategory)
     }
 
     private fun setupMapUi(uiSettings: UiSettings) {
@@ -107,6 +94,34 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun categoryItemClicked(category: Category) {
+        if (selectedCategory != category) {
+            selectedCategory = category
+            loadRestaurants(category)
+        }
+    }
+
+    private fun loadRestaurants(category: Category) {
+        markers.forEach {
+            it.map = null
+        }
+
+        markers =
+            getRestaurants(category).map { store ->
+                Marker().also {
+                    it.position = LatLng(store.latitude, store.longitude)
+                    it.map = naverMap
+                    it.captionText = store.name
+                    it.captionHaloColor = Color.WHITE
+                    it.captionTextSize = 15f
+                    it.setOnClickListener {
+                        val intent= Intent(this, LookupActivity::class.java)
+                        intent.putExtra("store_id", store.id)
+                        startActivity(intent)
+
+                        true
+                    }
+                }
+            }
     }
 
     companion object {
