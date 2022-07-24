@@ -17,6 +17,10 @@ import com.naver.maps.map.util.FusedLocationSource
 import gdsc.knu.api.getRestaurants
 import gdsc.knu.databinding.ActivityMapBinding
 import gdsc.knu.model.Category
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private val binding by lazy { ActivityMapBinding.inflate(layoutInflater) }
@@ -101,27 +105,34 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun loadRestaurants(category: Category) {
-        markers.forEach {
-            it.map = null
-        }
+        CoroutineScope(Dispatchers.Main).launch {
+            val restaurants =
+                CoroutineScope(Dispatchers.IO).async {
+                    return@async getRestaurants(category)
+                }
 
-        markers =
-            getRestaurants(category).map { store ->
-                Marker().also {
-                    it.position = LatLng(store.latitude, store.longitude)
-                    it.map = naverMap
-                    it.captionText = store.name
-                    it.captionHaloColor = Color.WHITE
-                    it.captionTextSize = 15f
-                    it.setOnClickListener {
-                        val intent= Intent(this, LookupActivity::class.java)
-                        intent.putExtra("store_id", store.id)
-                        startActivity(intent)
+            markers.forEach {
+                it.map = null
+            }
 
-                        true
+            markers =
+                restaurants.await().map { store ->
+                    Marker().also {
+                        it.position = LatLng(store.latitude, store.longitude)
+                        it.map = naverMap
+                        it.captionText = store.name
+                        it.captionHaloColor = Color.WHITE
+                        it.captionTextSize = 15f
+                        it.setOnClickListener {
+                            val intent= Intent(this@MapActivity, LookupActivity::class.java)
+                            intent.putExtra("store_id", store.id)
+                            startActivity(intent)
+
+                            true
+                        }
                     }
                 }
-            }
+        }
     }
 
     companion object {
