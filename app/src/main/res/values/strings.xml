@@ -10,7 +10,8 @@
     <string name="restaurant_location">주소</string>
     <string name="restaurant_location_hint">대구광역시 북구 대학로 80</string>
     <string name="restaurant_menu">메뉴</string>
-    <string name="restaurant_menu_hint">메뉴를 적고 메뉴 등록 버튼을 눌러주세요.</string>
+    <string name="restaurant_menu_hint">메뉴 입력</string>
+    <string name="restaurant_menu_price_hint">가격 입력</string>
     <string name="add_restaurant_menu">메뉴 등록</string>
     <string name="restaurant_category">카테고리</string>
     <string name="submit">등록</string>

@@ -1,15 +1,16 @@
 package gdsc.knu
 
+import android.os.Build
 import android.os.Bundle
+import android.os.StrictMode
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import gdsc.knu.databinding.ActivityRegisterBinding
-import gdsc.knu.model.RestaurantCreateRequest
+import gdsc.knu.model.KnuMenu
 
 class RegisterActivity : AppCompatActivity() {
     private val binding by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
@@ -18,11 +19,16 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        if (Build.VERSION.SDK_INT > 9) {
+            val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+            StrictMode.setThreadPolicy(policy)
+        }
         // 메뉴 추가
-        val list = ArrayList<String>()
+        val list = ArrayList<KnuMenu>()
 
         binding.addMenu.setOnClickListener {
-            list.add(binding.inputMenu.text.toString())
+            list.add(KnuMenu(binding.inputMenu.text.toString(), binding.inputMenuPrice.text.toString()))
+//              list.add(binding.inputMenu.text.toString())
 
             Log.d("test log", list.toString())
 
@@ -30,6 +36,7 @@ class RegisterActivity : AppCompatActivity() {
             binding.recyclerView.adapter=Adapter(list)
            // binding.recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
             binding.inputMenu.setText("")
+            binding.inputMenuPrice.setText("")
         }
 
         // 스피너
@@ -55,16 +62,40 @@ class RegisterActivity : AppCompatActivity() {
 
         //등록 버튼 누르면
         binding.registerBtn.setOnClickListener {
-            val request = RestaurantCreateRequest(
-                binding.inputName.text.toString(),
-                binding.inputExplan.text.toString(),
-                binding.inputTel.text.toString(),
-                binding.inputLocation.text.toString(),
-                list,
-                selected_category
-            )
-
-            Log.d("regist", request.toString())
+            print("hi")
+//            val url = "https://knueat.herokuapp.com/eats"
+//            val JSON = MediaType.parse("application/json; charset=utf-8")
+//
+//            val client = OkHttpClient()
+//
+//            //POST 요청 객체 생성
+//            val jsonInput = JSONObject()
+//            try{
+//                jsonInput.put("name", binding.inputName.text.toString())
+//                jsonInput.put("description", binding.inputExplan.text.toString())
+//                jsonInput.put("tel", binding.inputTel.text.toString())
+//                jsonInput.put("address", binding.inputLocation.text.toString())
+//                jsonInput.put("menu", list)
+//                jsonInput.put("category", selected_category)
+//            } catch(e:JSONException){
+//                e.printStackTrace();
+//                return@setOnClickListener;
+//            }
+//            val body = RequestBody.create(JSON, jsonInput.toString())
+//            Log.d("upload post", "request Body: $jsonInput")
+//
+//            val builder = Request.Builder().url(url).post(body)
+//            val request = builder.build()
+//
+//            val response = client.newCall(request).execute()
+//            //등록하고 메인화면으로..?
+//            if (response.isSuccessful) {
+//                val intent= Intent(this, MapActivity::class.java)
+//                startActivity(intent)
+//            }
+//            else {
+//                Log.e("upload post", "code: ${response.code()}, message: ${response.body().string()}")
+//            }
         }
     }
 }

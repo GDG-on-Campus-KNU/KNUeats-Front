@@ -1,17 +1,13 @@
 package gdsc.knu
 
-import android.content.Context
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import android.view.View
-import gdsc.knu.R
-import android.widget.TextView
 import gdsc.knu.databinding.ListItemBinding
-import java.util.ArrayList
+import gdsc.knu.model.KnuMenu
+import kotlin.collections.ArrayList
 
-class Adapter (private val list: ArrayList<String>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter(private val list: ArrayList<KnuMenu>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding=ListItemBinding.inflate(LayoutInflater.from(parent.context),parent, false)
         return ViewHolder(binding)
@@ -26,8 +22,9 @@ class Adapter (private val list: ArrayList<String>) : RecyclerView.Adapter<Adapt
     }
 
     class ViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data : String){
-            binding.textContent.text=data
+        fun bind(data: KnuMenu){
+            binding.textContent.text=data.name
+            binding.textPrice.text=data.price
         }
     }
 }
