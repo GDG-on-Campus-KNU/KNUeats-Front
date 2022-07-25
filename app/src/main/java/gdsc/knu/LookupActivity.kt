@@ -22,14 +22,14 @@ class LookupActivity : AppCompatActivity() {
         binding.tel.text = restaurant.tel
         binding.address.text = restaurant.address
         binding.tel.text = restaurant.tel
-        binding.category.text = restaurant.category
+        binding.category.text = restaurant.category.displayName
         addData(restaurant.menu)
         binding.mRecyclerView.adapter = MenuAdapter(menuList)
     }
 
-    private fun addData(menus: List<String>){
-        for(i in menus){
-            menuList.add(MenuItem(i))
+    private fun addData(menus: List<MenuItem>){
+        for(menu in menus){
+            menuList.add(menu)
         }
     }
 }

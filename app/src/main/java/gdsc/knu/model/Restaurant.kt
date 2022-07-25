@@ -8,6 +8,9 @@ data class Restaurant(
     val address: String,
     val latitude: Double,
     val longitude: Double,
-    val menu: List<String>,
-    val category: String
+    val location: String,
+    val menu: List<MenuItem>,
+    val category: Category,
+    val score: Double,
+    val review: Int
 )

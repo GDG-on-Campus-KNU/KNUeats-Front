@@ -1,5 +1,8 @@
 package gdsc.knu.model
 
 data class MenuItem(
-    val menu: String
+    val id: Long,
+    val restaurantId: Long,
+    val name: String,
+    val price: String
 )
