@@ -25,7 +25,7 @@ class MenuAdapter (private val menuList: ArrayList<MenuItem>): RecyclerView.Adap
     class ViewHolder(private val binding: MenuItemBinding):RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: MenuItem){
-            binding.nameTv.text = item.menu
+            binding.nameTv.text = item.name
         }
     }
 }
