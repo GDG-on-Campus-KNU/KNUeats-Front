@@ -106,7 +106,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun loadRestaurants(category: Category) {
         CoroutineScope(Dispatchers.Main).launch {
-            val restaurants =
+            val response =
                 CoroutineScope(Dispatchers.IO).async {
                     return@async getRestaurants(category)
                 }
@@ -116,7 +116,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
             markers =
-                restaurants.await().map { store ->
+                response.await().map { store ->
                     Marker().also {
                         it.position = LatLng(store.latitude, store.longitude)
                         it.map = naverMap
