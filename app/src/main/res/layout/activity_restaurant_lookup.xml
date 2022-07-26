@@ -19,7 +19,7 @@
         android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="#66B2FF"
-        android:text="이름"/>
+        android:text="@string/restaurant_name"/>
 
     <TextView
         android:id="@+id/title"
@@ -28,7 +28,6 @@
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="title"
         android:textColor="#222"
         android:textSize="22sp"
         android:textStyle="bold" />
@@ -40,7 +39,7 @@
         android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="#66B2FF"
-        android:text="설명"/>
+        android:text="@string/restaurant_description"/>
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"
@@ -49,7 +48,6 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:maxLines="3"
-        android:text="description"
         android:textColor="#000000"
         android:textSize="18sp" />
     <TextView
@@ -60,7 +58,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#66B2FF"
-        android:text="전화번호"/>
+        android:text="@string/restaurant_tel"/>
     <TextView
         android:id="@+id/tel"
         android:paddingTop="10dp"
@@ -68,7 +66,6 @@
         android:paddingLeft="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="053-123-4567"
         android:textSize="18sp"
         android:textColor="#000000"/>
 
@@ -77,10 +74,10 @@
         android:paddingTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#66B2FF"
-        android:text="카테고리"/>
+        android:text="@string/restaurant_category"/>
 
 
         <TextView
@@ -91,8 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textColor="#000000"
-            android:text="양식" />
+            android:textColor="#000000" />
     <TextView
         android:paddingTop="30dp"
         android:paddingLeft="20dp"
@@ -101,7 +97,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#66B2FF"
-        android:text="위치"/>
+        android:text="@string/restaurant_location"/>
         <TextView
             android:id="@+id/address"
             android:paddingTop="10dp"
@@ -111,17 +107,16 @@
             android:layout_height="match_parent"
             android:maxLines="3"
             android:textColor="#000000"
-            android:textSize="18sp"
-            android:text="대구광역시" />
+            android:textSize="18sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
         android:paddingTop="30dp"
-        android:text="메뉴"
+        android:text="@string/restaurant_menu"
         android:textColor="#66B2FF"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
