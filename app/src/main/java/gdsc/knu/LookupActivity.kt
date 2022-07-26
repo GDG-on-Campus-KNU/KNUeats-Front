@@ -2,36 +2,50 @@ package gdsc.knu
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import gdsc.knu.api.getStore
-import gdsc.knu.databinding.StoreLookupBinding
+import gdsc.knu.api.getRestaurant
+import gdsc.knu.databinding.ActivityRestaurantLookupBinding
+import gdsc.knu.model.MenuItem
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class LookupActivity : AppCompatActivity() {
-    private var mBinding: StoreLookupBinding? = null
-    private val binding get() = mBinding!!
-    var menuList = arrayListOf<MenuItem>()
+    private val binding by lazy { ActivityRestaurantLookupBinding.inflate(layoutInflater) }
+    private val menuList = arrayListOf<MenuItem>()
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-
-        mBinding = StoreLookupBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val store = getStore(1)
 
-        binding.title.text = store.name
-        binding.description.text = store.description
-        binding.tel.text = store.tel
-        binding.address.text = store.address
-        binding.tel.text = store.tel
-        binding.category.text = store.category
-        addData(store.menu)
-        binding.mRecyclerView.adapter = MenuAdapter(menuList)
+        val id = intent.getLongExtra("store_id", 1)
+
+        loadRestaurant(id)
     }
-    override fun onDestroy(){
-        mBinding = null
-        super.onDestroy()
+
+    private fun loadRestaurant(id: Long) {
+        CoroutineScope(Dispatchers.Main).launch {
+            val result =
+                CoroutineScope(Dispatchers.IO).async {
+                    return@async getRestaurant(id)
+                }
+
+            val restaurant = result.await()
+
+            binding.title.text = restaurant.name
+            binding.description.text = restaurant.description
+            binding.tel.text = restaurant.tel
+            binding.address.text = restaurant.address
+            binding.tel.text = restaurant.tel
+            binding.category.text = restaurant.category.displayName
+            addData(restaurant.menu)
+            binding.mRecyclerView.adapter = MenuAdapter(menuList)
+        }
     }
-    fun addData(mlist:List<String>){
-        for(i in mlist){
-            menuList.add(MenuItem(i))
+
+    private fun addData(menus: List<MenuItem>){
+        for(menu in menus){
+            menuList.add(menu)
         }
     }
 }

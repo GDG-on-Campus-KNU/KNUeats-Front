@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import gdsc.knu.databinding.MenuItemBinding
+import gdsc.knu.model.MenuItem
 
 class MenuAdapter (private val menuList: ArrayList<MenuItem>): RecyclerView.Adapter<MenuAdapter.ViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,7 +25,7 @@ class MenuAdapter (private val menuList: ArrayList<MenuItem>): RecyclerView.Adap
     class ViewHolder(private val binding: MenuItemBinding):RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: MenuItem){
-            binding.nameTv.text = item.menu
+            binding.nameTv.text = item.name
         }
     }
 }

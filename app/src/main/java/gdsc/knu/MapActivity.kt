@@ -4,26 +4,39 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.annotation.UiThread
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.geometry.LatLngBounds
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
-import gdsc.knu.api.getStores
+import gdsc.knu.api.getRestaurants
 import gdsc.knu.databinding.ActivityMapBinding
+import gdsc.knu.model.Category
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
     private val binding by lazy { ActivityMapBinding.inflate(layoutInflater) }
     private lateinit var locationSource: FusedLocationSource
     private lateinit var naverMap: NaverMap
+    private var selectedCategory: Category = Category.KOREA
+    private var markers: List<Marker> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        setupCategories()
+
         binding.plusButton.setOnClickListener {
-            val intent= Intent(this, Register::class.java)
+            val intent= Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
@@ -65,22 +78,61 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             LatLng(35.895, 128.62)
         )
 
-        getStores().forEach { store ->
-            Marker().apply {
-                position = LatLng(store.latitude, store.longitude)
-                map = naverMap
-                captionText = store.name
-                captionHaloColor = Color.WHITE
-                captionTextSize = 15f
-            }.setOnClickListener {
-                println(store.id)
-                true
-            }
-        }
+        loadRestaurants(selectedCategory)
     }
 
     private fun setupMapUi(uiSettings: UiSettings) {
         uiSettings.isLocationButtonEnabled = true
+    }
+
+    private fun setupCategories() {
+        val categories = ArrayList<Category>()
+        for (category in Category.values()) {
+            categories.add(category)
+        }
+
+        binding.categories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.categories.adapter = CategoryAdapter(categories) {
+         selectedCategoryItem: Category -> categoryItemClicked(selectedCategoryItem)
+        }
+    }
+
+    private fun categoryItemClicked(category: Category) {
+        if (selectedCategory != category) {
+            selectedCategory = category
+            loadRestaurants(category)
+        }
+    }
+
+    private fun loadRestaurants(category: Category) {
+        CoroutineScope(Dispatchers.Main).launch {
+            val response =
+                CoroutineScope(Dispatchers.IO).async {
+                    return@async getRestaurants(category)
+                }
+
+            markers.forEach {
+                it.map = null
+            }
+
+            markers =
+                response.await().map { store ->
+                    Marker().also {
+                        it.position = LatLng(store.latitude, store.longitude)
+                        it.map = naverMap
+                        it.captionText = store.name
+                        it.captionHaloColor = Color.WHITE
+                        it.captionTextSize = 15f
+                        it.setOnClickListener {
+                            val intent= Intent(this@MapActivity, LookupActivity::class.java)
+                            intent.putExtra("store_id", store.id)
+                            startActivity(intent)
+
+                            true
+                        }
+                    }
+                }
+        }
     }
 
     companion object {
