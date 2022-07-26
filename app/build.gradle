@@ -58,4 +58,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     // 네이버 지도 SDK
     implementation("com.naver.maps:map-sdk:3.15.0")
+
+    //heroku
+    implementation group: 'com.squareup.okhttp', name: 'okhttp', version: '2.7.5'
 }

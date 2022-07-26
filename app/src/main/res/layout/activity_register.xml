@@ -115,16 +115,35 @@
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <EditText
-            android:id="@+id/inputMenu"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:hint="@string/restaurant_menu_hint"
-            android:inputType="text"
-            tools:ignore="TextContrastCheck"
-            android:importantForAutofill="no" />
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/inputMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="@string/restaurant_menu_hint"
+                android:inputType="text"
+                tools:ignore="TextContrastCheck"
+                android:importantForAutofill="no" />
+            <EditText
+                android:id="@+id/inputMenuPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:hint="@string/restaurant_menu_price_hint"
+                android:inputType="text"
+                tools:ignore="TextContrastCheck"
+                android:importantForAutofill="no" />
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/addMenu"
@@ -150,6 +169,24 @@
 
         <Spinner
             android:id="@+id/inputCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/restaurant_door"
+            android:textColor="@color/knueats_main"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/inputDoor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
