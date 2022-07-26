@@ -129,6 +129,8 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d("PRINT", "SUCCESS")
                 val intent= Intent(this, MapActivity::class.java)
                 startActivity(intent)
+
+                finish()
             }
             else {
                 Log.e("upload post", "code: ${response.code()}, message: ${response.body().string()}")
