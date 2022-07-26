@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
 
         // 스피너
         var selected_category = "한식"
-        val itemList = listOf("한식", "분식", "양식", "일식", "카페/디저트", "중식", "아시안", "술집", "기타")
+        val itemList = listOf("한식", "분식", "양식", "일식", "카페", "중식", "아시안", "술집", "기타")
         val adapter = ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, itemList)
         binding.inputCategory.adapter = adapter
         binding.inputCategory.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener,
@@ -119,7 +119,6 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             val body = RequestBody.create(JSON, jsonInput.toString())
-           Log.d("upload post", "request Body: $jsonInput")
 
             val builder = Request.Builder().url(url).post(body)
             val request = builder.build()
