@@ -13,5 +13,8 @@
     <string name="restaurant_menu_hint">메뉴를 적고 메뉴 등록 버튼을 눌러주세요.</string>
     <string name="add_restaurant_menu">메뉴 등록</string>
     <string name="restaurant_category">카테고리</string>
+    <string name="restaurant_score">별점</string>
+    <string name="restaurant_score_text">%.2f</string>
+    <string name="restaurant_max_score_text">/5</string>
     <string name="submit">등록</string>
 </resources>
