@@ -4,10 +4,10 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import gdsc.knu.databinding.ListItemBinding
-import gdsc.knu.model.KnuMenu
+import gdsc.knu.model.Menu
 import kotlin.collections.ArrayList
 
-class Adapter(private val list: ArrayList<KnuMenu>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter(private val list: ArrayList<Menu>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding=ListItemBinding.inflate(LayoutInflater.from(parent.context),parent, false)
         return ViewHolder(binding)
@@ -22,7 +22,7 @@ class Adapter(private val list: ArrayList<KnuMenu>) : RecyclerView.Adapter<Adapt
     }
 
     class ViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: KnuMenu){
+        fun bind(data: Menu){
             binding.textContent.text=data.name
             binding.textPrice.text=data.price
         }

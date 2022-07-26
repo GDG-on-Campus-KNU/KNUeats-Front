@@ -14,5 +14,6 @@
     <string name="restaurant_menu_price_hint">가격 입력</string>
     <string name="add_restaurant_menu">메뉴 등록</string>
     <string name="restaurant_category">카테고리</string>
+    <string name="restaurant_door">위치</string>
     <string name="submit">등록</string>
 </resources>
