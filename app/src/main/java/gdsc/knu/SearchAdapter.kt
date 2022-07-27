@@ -11,7 +11,7 @@ import gdsc.knu.databinding.SearchItemBinding
 import gdsc.knu.model.Restaurant
 import java.util.ArrayList
 
-class SearchAdapter (private val list: ArrayList<Restaurant>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(private val list: ArrayList<SearchlistActivity.SearchItem>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding=SearchItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -36,10 +36,12 @@ class SearchAdapter (private val list: ArrayList<Restaurant>) : RecyclerView.Ada
 
     class ViewHolder(private val binding: SearchItemBinding) : RecyclerView.ViewHolder(binding.root) {
         private var view : View = binding.root
-        fun bind(listener: View.OnClickListener, data : Restaurant){
+        fun bind(listener: View.OnClickListener, data: SearchlistActivity.SearchItem){
             binding.textName.text=data.name
             view.setOnClickListener(listener)
         }
     }
+
+//    data class SearchItem(val id: Long, val name: String)
 }
 
