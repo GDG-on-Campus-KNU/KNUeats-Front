@@ -40,11 +40,12 @@ class LookupActivity : AppCompatActivity() {
             binding.category.text = restaurant.category.displayName
             addData(restaurant.menu)
             binding.mRecyclerView.adapter = MenuAdapter(menuList)
-            binding.ratingBar.rating = restaurant.score.toFloat()
             if (restaurant.review == 0) {
                 binding.scoreText.text = "-"
+                binding.ratingBar.rating = 0.0f
             }
             else {
+                binding.ratingBar.rating = (restaurant.score/restaurant.review).toFloat()
                 binding.scoreText.text = getString(R.string.restaurant_score_text, restaurant.score/restaurant.review)
             }
         }
