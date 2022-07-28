@@ -10,12 +10,8 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.squareup.okhttp.OkHttpClient
-import com.squareup.okhttp.Request
 import gdsc.knu.databinding.ActivitySearchlistBinding
-import gdsc.knu.model.Category
-import gdsc.knu.model.MenuItem
-import gdsc.knu.model.Restaurant
+import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONObject
 
