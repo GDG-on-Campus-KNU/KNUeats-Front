@@ -40,10 +40,10 @@
 
 ## 데모 사진
 ### 메인 화면
-**한식 카테고리의 가게들**
+**한식 카테고리의 가게들**  
 <img src="./docs/images/map_korean.png" width="50%">
 
-**분식 카테고리의 가게들**
+**분식 카테고리의 가게들**  
 <img src="./docs/images/map_snak.png" width="50%">
 
 ### 가게 등록 화면
