@@ -53,5 +53,7 @@
 ### 가게 상세 조회 화면
 <img src="./docs/images/restaurant_detail.png" width="50%">
 
+<img src="./docs/images/regist_score.png" width="50%">
+
 ### 가게 검색 화면
 <img src="./docs/images/search_restaurant.png" width="50%">
