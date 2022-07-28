@@ -10,7 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.squareup.okhttp.*
+import okhttp3.*
 import gdsc.knu.databinding.ActivityRegisterBinding
 import gdsc.knu.model.Menu
 import org.json.JSONArray
@@ -133,7 +133,7 @@ class RegisterActivity : AppCompatActivity() {
                 finish()
             }
             else {
-                Log.e("upload post", "code: ${response.code()}, message: ${response.body().string()}")
+                Log.e("upload post", "code: ${response.code()}, message: ${response.body()?.string()}")
             }
         }
     }
