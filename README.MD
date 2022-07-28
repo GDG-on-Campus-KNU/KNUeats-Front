@@ -41,17 +41,17 @@
 ## 데모 사진
 ### 메인 화면
 **한식 카테고리의 가게들**
-![맵 - 한식 카테고리](./docs/images/map_korean.png)
+<img src="./docs/images/map_korean.png" width="50%">
 
 **분식 카테고리의 가게들**
-![맵 - 분식 카테고리](./docs/images/map_snak.png)
+<img src="./docs/images/map_snak.png" width="50%">
 
 ### 가게 등록 화면
-![가게 등록 화면1](./docs/images/regist_restaurant.png)
-![가게 등록 화면2](./docs/images/regist_restaurant2.png)
+<img src="./docs/images/regist_restaurant.png" width="50%">
+<img src="./docs/images/regist_restaurant2.png" width="50%">
 
 ### 가게 상세 조회 화면
-![가게 상세 화면](./docs/images/restaurant_detail.png)
+<img src="./docs/images/restaurant_detail.png" width="50%">
 
 ### 가게 검색 화면
-![가게 검색 화면](./docs/images/search_restaurant.png)
+<img src="./docs/images/search_restaurant.png" width="50%">
