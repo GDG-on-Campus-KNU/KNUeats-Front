@@ -26,6 +26,7 @@ class MenuAdapter (private val menuList: ArrayList<MenuItem>): RecyclerView.Adap
 
         fun bind(item: MenuItem){
             binding.nameTv.text = item.name
+            binding.priceTv.text = item.price
         }
     }
 }
