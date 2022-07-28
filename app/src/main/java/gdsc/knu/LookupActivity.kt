@@ -1,8 +1,10 @@
 package gdsc.knu
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import gdsc.knu.api.getRestaurant
+import gdsc.knu.api.putReview
 import gdsc.knu.databinding.ActivityRestaurantLookupBinding
 import gdsc.knu.model.MenuItem
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +23,26 @@ class LookupActivity : AppCompatActivity() {
         val id = intent.getLongExtra("store_id", 1)
 
         loadRestaurant(id)
+
+        binding.inputRatingBar.setOnRatingBarChangeListener{_, rating, _ ->
+            binding.inputRatingBar.rating=rating
+        }
+
+        binding.ratingBtn.setOnClickListener{
+            Log.d("print", "${binding.inputRatingBar.rating}");
+            CoroutineScope(Dispatchers.Main).launch {
+                val result =
+                    CoroutineScope(Dispatchers.IO).async {
+                        return@async putReview(id, binding.inputRatingBar.rating)
+                    }
+
+                result.await()
+
+                loadRestaurant(id)
+                }
+            }
     }
+
 
     private fun loadRestaurant(id: Long) {
         CoroutineScope(Dispatchers.Main).launch {
@@ -55,5 +76,9 @@ class LookupActivity : AppCompatActivity() {
         for(menu in menus){
             menuList.add(menu)
         }
+    }
+
+    private fun addReview() {
+
     }
 }
