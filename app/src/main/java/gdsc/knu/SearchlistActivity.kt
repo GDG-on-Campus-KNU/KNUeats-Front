@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.os.Build
 import android.os.Bundle
 import android.os.StrictMode
+import android.text.Editable
 import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.InputMethodManager
@@ -28,24 +29,26 @@ class SearchlistActivity : AppCompatActivity() {
         }
 
         intent.getStringExtra("search_item")?.let { Log.e(TAG, it) }
-        val search_item=intent.getStringExtra("search_item").toString()
+        val search_item = intent.getStringExtra("search_item").toString()
         var list = dataAdd(search_item)
         val adapter = SearchAdapter(list)
         binding.searchRecycler.adapter=adapter
         binding.searchRecycler.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
+        binding.search.text = Editable.Factory.getInstance().newEditable(search_item)
         binding.search.setOnKeyListener {view, keyCode, event ->
             val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 imm.hideSoftInputFromWindow(binding.search.windowToken, 0)
 
-                val list=dataAdd(binding.search.text.toString())
-                val adapter = SearchAdapter(list)
-                binding.searchRecycler.adapter = adapter
-         //       binding.searchRecycler.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+                val list = dataAdd(binding.search.text.toString())
+                binding.searchRecycler.adapter = SearchAdapter(list)
+
                 true
             }
-            false
+            else {
+                false
+            }
         }
     }
 

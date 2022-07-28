@@ -60,14 +60,16 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 imm.hideSoftInputFromWindow(binding.searchMain.windowToken, 0)
-                println(binding.searchMain.text.toString()+"!!!!")
 
                 val intent=Intent(this, SearchlistActivity::class.java)
                 intent.putExtra("search_item", binding.searchMain.text.toString())
                 startActivity(intent)
+
                 true
             }
-            false
+            else {
+                false
+            }
         }
 
     }
