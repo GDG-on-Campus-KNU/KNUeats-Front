@@ -171,6 +171,30 @@
     </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <RatingBar
+            android:id="@+id/input_ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp" />
+
+        <Button
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="별점 등록"
+            android:background="@drawable/btn_design"
+            android:textSize="20sp"
+            android:id="@+id/rating_btn"  />
+    </LinearLayout>
+
+
 </LinearLayout>
 </ScrollView>
 

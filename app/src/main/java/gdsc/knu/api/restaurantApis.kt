@@ -1,14 +1,17 @@
 package gdsc.knu.api
 
+import android.content.Intent
 import android.util.Log
-import com.fasterxml.jackson.databind.DeserializationFeature
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.fasterxml.jackson.module.kotlin.readValue
+import gdsc.knu.MapActivity
+//import com.fasterxml.jackson.databind.DeserializationFeature
+//import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+//import com.fasterxml.jackson.module.kotlin.readValue
 import gdsc.knu.model.Category
 import gdsc.knu.model.MenuItem
 import gdsc.knu.model.Restaurant
 import okhttp3.*
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 
 fun getRestaurant(id: Long): Restaurant {
@@ -122,3 +125,34 @@ private fun getCategory(displayName: String): Category =
         "술집" -> Category.BAR
         else -> Category.ETC
     }
+
+fun putReview (id: Long, score: Float) {
+    try {
+        val url = "https://knueat.herokuapp.com/${id}/score"
+        val JSON = MediaType.parse("application/json; charset=utf-8")
+        val client = OkHttpClient()
+        val jsonInput = JSONObject()
+        try{
+            jsonInput.put("score", score)
+        } catch(e: JSONException){
+            e.printStackTrace();
+            return;
+        }
+
+        val body = RequestBody.create(JSON, jsonInput.toString())
+
+        val builder = Request.Builder().url(url).post(body)
+        val request = builder.build()
+
+        val response = client.newCall(request).execute()
+        //등록하고 메인화면으로..
+        if (response.isSuccessful) {
+            Log.d("PRINT", "SUCCESS")
+        }
+        else {
+            Log.e("upload post", "code: ${response.code()}, message: ${response.body()?.string()}")
+        }
+    } catch (e: Exception) {
+        Log.e("api_call", e.toString())
+    }
+}
