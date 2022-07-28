@@ -8,13 +8,14 @@
 
     <EditText
         android:id="@+id/search"
-        android:hint="검색어를 입력하세요"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:drawableLeft="@drawable/search_icon" />
+        android:drawableLeft="@drawable/search_icon"
+        android:hint="검색어를 입력하세요"
+        android:inputType="text"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRecycler"

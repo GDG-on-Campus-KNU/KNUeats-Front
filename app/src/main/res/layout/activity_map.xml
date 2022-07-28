@@ -33,6 +33,7 @@
         android:layout_marginRight="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text"
         tools:ignore="ImageContrastCheck"
         tools:layout="@layout/dummy_mapviewfragment" />
 
