@@ -49,7 +49,7 @@ fun getRestaurant(id: Long): Restaurant {
 
 fun getRestaurants(category: Category): List<Restaurant> {
     try {
-        val url = "https://knueat.herokuapp.com/category/${category.displayName}"
+        val url = "https://knueat.herokuapp.com/category/${category.code}"
 
         val client = OkHttpClient()
         val request = Request.Builder().url(url).build()
