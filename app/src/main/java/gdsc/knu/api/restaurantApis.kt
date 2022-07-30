@@ -1,15 +1,14 @@
 package gdsc.knu.api
 
-import android.content.Intent
 import android.util.Log
-import gdsc.knu.MapActivity
-//import com.fasterxml.jackson.databind.DeserializationFeature
-//import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-//import com.fasterxml.jackson.module.kotlin.readValue
 import gdsc.knu.model.Category
 import gdsc.knu.model.MenuItem
 import gdsc.knu.model.Restaurant
-import okhttp3.*
+import gdsc.knu.model.SearchItem
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -81,6 +80,42 @@ fun getRestaurants(category: Category): List<Restaurant> {
     return emptyList()
 }
 
+fun searchRestaurants(search_keyword: String): List<SearchItem> {
+    val result = ArrayList<SearchItem>()
+
+    try {
+        val url="https://knueat.herokuapp.com/search?word=$search_keyword"
+
+        val client = OkHttpClient()
+        val builder = Request.Builder().url(url).get()
+        builder.addHeader("Content-Type", "application/json; charset=utf-8")
+        val request = builder.build()
+
+        val response = client.newCall(request).execute()
+        if (response.isSuccessful) {
+            val body = response.body()
+            if (body != null) {
+                val restaurants = JSONArray(body.string())
+
+                for(i in 0 until restaurants.length()){
+                    val restaurant = restaurants.getJSONObject(i)
+
+                    val searchItem = SearchItem(
+                        restaurant.getLong("id"),
+                        restaurant.getString("name")
+                    )
+                    result.add(searchItem)
+                }
+            }
+        } else System.err.println("Error Occurred")
+
+    } catch (e: Exception) {
+        Log.e("api_call", e.toString())
+    }
+
+    return result
+}
+
 private fun parseJsonObjectToRestaurant(json: JSONObject, id: Long = 0): Restaurant {
     val jsonArray = json.getJSONArray("menu")
     val menus = ArrayList<MenuItem>()
@@ -135,8 +170,8 @@ fun putReview (id: Long, score: Float) {
         try{
             jsonInput.put("score", score)
         } catch(e: JSONException){
-            e.printStackTrace();
-            return;
+            e.printStackTrace()
+            return
         }
 
         val body = RequestBody.create(JSON, jsonInput.toString())
