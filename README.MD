@@ -28,6 +28,9 @@
 ### Server Deploy
 <img src="https://img.shields.io/badge/heroku-430098?style=for-the-badge&logo=Heroku&logoColor=white"> <img src="https://img.shields.io/badge/amazon RDS-527FFF?style=for-the-badge&logo=Amazon RDS&logoColor=white">
 
+## 백엔드 레포지토리
+[GDSC-KNU/KNUeats-Backend](https://github.com/GDSC-KNU/KNUeats-Backend)
+
 ## Project 설명
 [네이버 Maps Open API](https://guide.ncloud-docs.com/docs/naveropenapiv3-maps-overview)를 사용한 프로젝트입니다.  
 
